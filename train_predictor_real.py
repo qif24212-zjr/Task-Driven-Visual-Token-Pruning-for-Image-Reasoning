@@ -1,6 +1,5 @@
 import torch
 import torch.nn as nn
-from tqdm import tqdm
 
 from semantic.semantic_predictor import SemanticPredictor
 
@@ -21,10 +20,12 @@ for epoch in range(20):
 
     total_loss = 0
 
-    for sample in tqdm(dataset):
+    for sample in dataset:
 
         visual = sample["visual"].unsqueeze(0).cuda()
+
         semantic = sample["semantic"].unsqueeze(0).cuda()
+
         mask = sample["mask"].unsqueeze(0).cuda()
 
         score = model(
@@ -35,7 +36,7 @@ for epoch in range(20):
 
         loss = criterion(
             score,
-            mask
+            mask.float()
         )
 
         optimizer.zero_grad()
