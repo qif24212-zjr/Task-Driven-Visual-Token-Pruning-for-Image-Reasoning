@@ -26,7 +26,6 @@ for idx, row in enumerate(tqdm(df.itertuples(), total=len(df))):
     with open(img_path, "wb") as f:
         f.write(row.image["bytes"])
 
-    # ✅ 只调用一次（关键修复）
     semantic, mask, visual = build_semantic_cache(
         question,
         img_path
