@@ -1,16 +1,4 @@
-#    Copyright 2023 Haotian Liu
-#
-#    Licensed under the Apache License, Version 2.0 (the "License");
-#    you may not use this file except in compliance with the License.
-#    You may obtain a copy of the License at
-#
-#        http://www.apache.org/licenses/LICENSE-2.0
-#
-#    Unless required by applicable law or agreed to in writing, software
-#    distributed under the License is distributed on an "AS IS" BASIS,
-#    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-#    See the License for the specific language governing permissions and
-#    limitations under the License.
+
 from abc import ABC, abstractmethod
 
 import torch
@@ -220,9 +208,9 @@ class LlavaMetaForCausalLM(ABC):
                 )
             )
 
-# ===== 加这一句 =====
+
             predictor = predictor.to(torch.device("cuda"))
-# ===================
+
 
             predictor.eval()
 
@@ -232,9 +220,7 @@ class LlavaMetaForCausalLM(ABC):
        
 
         image_features = self.get_model().mm_projector(image_features)
-        # =========================
-        # LOAD REAL DATA FROM PIPELINE
-# =========================
+  
 
         
     
