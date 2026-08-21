@@ -26,9 +26,7 @@ from llava.mm_utils import (
 from llava.utils import disable_torch_init
 
 
-# =====================================================
-# Model
-# =====================================================
+
 
 MODEL_PATH = "/root/autodl-tmp/llava-v1.5-7b"
 
@@ -53,17 +51,13 @@ model.eval()
 print("Model loaded.")
 
 
-# =====================================================
-# Build ScienceQA Prompt
-# =====================================================
+
 
 def build_prompt(question):
     return question
 
 
-# =====================================================
-# Inference
-# =====================================================
+
 
 def inference(image, question):
 
@@ -132,16 +126,7 @@ def inference(image, question):
     return output.strip(), latency
 
 
-# =====================================================
-# Parse Letter
-# =====================================================
 
-
-
-
-# =====================================================
-# Dataset
-# =====================================================
 
 
 from datasets import load_dataset
@@ -158,9 +143,6 @@ latency_sum = 0
 latency_count = 0
 
 
-# =====================================================
-# Evaluation
-# =====================================================
 
 from PIL import Image
 
