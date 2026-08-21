@@ -7,9 +7,6 @@ from semantic.question_encoder import QuestionEncoder
 from semantic.bbox_to_mask import bbox_to_mask
 
 
-# =========================
-# Config
-# =========================
 
 QUESTION = "What color is the cat?"
 
@@ -26,9 +23,7 @@ CACHE_DIR = (
 )
 
 
-# =========================
-# Concept Extraction
-# =========================
+
 
 def extract_concepts(question):
 
@@ -77,9 +72,7 @@ def extract_concepts(question):
     return concepts
 
 
-# =========================
-# Save Semantic Feature
-# =========================
+
 
 os.makedirs(
     CACHE_DIR,
@@ -103,9 +96,7 @@ print(
 )
 
 
-# =========================
-# Concept
-# =========================
+
 
 concepts = extract_concepts(
     QUESTION
@@ -117,9 +108,6 @@ print(
 )
 
 
-# =========================
-# YOLO
-# =========================
 
 model = YOLO(
     YOLO_PATH
@@ -134,9 +122,7 @@ results = model.predict(
     verbose=False
 )
 
-# =========================
-# Build Mask
-# =========================
+
 
 final_mask = torch.zeros(
     576
