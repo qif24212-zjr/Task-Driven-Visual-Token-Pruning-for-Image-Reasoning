@@ -4,9 +4,8 @@ import torch.nn as nn
 from tqdm import tqdm
 
 
-# =========================
-# Predictor
-# =========================
+
+
 class ImportancePredictor(nn.Module):
 
     def __init__(self):
@@ -25,9 +24,7 @@ class ImportancePredictor(nn.Module):
         return score.squeeze(-1)
 
 
-# =========================
-# Path
-# =========================
+
 
 FEATURE_DIR = "/root/autodl-tmp/datasets/mini_coco/features"
 
@@ -36,9 +33,6 @@ LABEL_DIR = "/root/autodl-tmp/datasets/mini_coco/labels"
 MODEL_PATH = "/root/autodl-tmp/LLaVA/experiments/predictor.pth"
 
 
-# =========================
-# Load predictor
-# =========================
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
@@ -53,9 +47,7 @@ predictor.eval()
 print("predictor loaded")
 
 
-# =========================
-# Evaluation
-# =========================
+
 
 total_recall = 0.0
 total_precision = 0.0
@@ -137,9 +129,7 @@ for fname in tqdm(label_files):
     count += 1
 
 
-# =========================
-# Results
-# =========================
+
 
 print()
 
