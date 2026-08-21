@@ -4,9 +4,7 @@ import torch
 from PIL import Image
 from tqdm import tqdm
 
-# ======================
-# 路径（按你的实际情况）
-# ======================
+
 IMG_DIR = "/root/autodl-tmp/datasets/mini_coco/train2017"
 ANN_FILE = "/root/autodl-tmp/datasets/mini_coco/annotations/instances_train2017.json"
 SAVE_DIR = "/root/autodl-tmp/datasets/mini_coco/labels"
@@ -16,9 +14,7 @@ os.makedirs(SAVE_DIR, exist_ok=True)
 GRID = 24  # 24x24 = 576 tokens
 
 
-# ======================
-# bbox → token label
-# ======================
+
 def bbox_to_label(bbox, img_w, img_h):
     x, y, w, h = bbox
     x2, y2 = x + w, y + h
@@ -39,9 +35,7 @@ def bbox_to_label(bbox, img_w, img_h):
     return label
 
 
-# ======================
-# load COCO annotations
-# ======================
+
 with open(ANN_FILE, "r") as f:
     coco = json.load(f)
 
@@ -57,9 +51,7 @@ for ann in annotations:
     ann_dict[img_id].append(ann["bbox"])
 
 
-# ======================
-# generate labels
-# ======================
+
 count = 0
 
 for img_id, img_info in tqdm(images.items()):
