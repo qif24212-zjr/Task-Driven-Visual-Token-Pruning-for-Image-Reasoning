@@ -9,16 +9,11 @@ from semantic.mask_encoder import bbox_to_mask
 from ultralytics import YOLO
 
 
-# ------------------
-# Question
-# ------------------
+
 
 question = "What color is the cat?"
 
 
-# ------------------
-# Concept
-# ------------------
 
 concept = "cat"
 
@@ -30,9 +25,7 @@ print("CONCEPT:")
 print(concept)
 
 
-# ------------------
-# Semantic Feature
-# ------------------
+
 
 encoder = QuestionEncoder()
 
@@ -47,9 +40,7 @@ print("SEMANTIC:")
 print(semantic_feature.shape)
 
 
-# ------------------
-# YOLO
-# ------------------
+
 
 model = YOLO(
     "/root/autodl-tmp/LLaVA/yolov8s-world.pt"
@@ -73,9 +64,7 @@ print("BBOX:")
 print(bbox)
 
 
-# ------------------
-# Mask
-# ------------------
+
 
 mask = bbox_to_mask(
     bbox,
@@ -98,9 +87,7 @@ print(
 )
 
 
-# ------------------
-# Verify Globals
-# ------------------
+
 
 print()
 print("GLOBAL SEMANTIC:")
