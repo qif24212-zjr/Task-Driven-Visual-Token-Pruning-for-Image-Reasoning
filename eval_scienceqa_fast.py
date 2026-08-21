@@ -35,9 +35,7 @@ from llava.mm_utils import (
 from llava.utils import disable_torch_init
 
 
-# =====================================================
-# Model
-# =====================================================
+
 
 MODEL_PATH = "/root/autodl-tmp/llava-v1.5-7b"
 
@@ -62,9 +60,7 @@ model.eval()
 print("Model loaded.")
 
 
-# =====================================================
-# Build ScienceQA Prompt
-# =====================================================
+
 
 LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
@@ -85,9 +81,7 @@ def build_prompt(question, choices):
     return prompt
 
 
-# =====================================================
-# Inference
-# =====================================================
+
 
 def inference(image, question, choices):
 
@@ -160,9 +154,7 @@ def inference(image, question, choices):
     return output.strip(), latency
 
 
-# =====================================================
-# Parse Letter
-# =====================================================
+
 
 def parse_answer(text):
 
@@ -179,9 +171,7 @@ def parse_answer(text):
     return None
 
 
-# =====================================================
-# Dataset
-# =====================================================
+
 
 ds = load_dataset(
     "/root/autodl-tmp/datasets/scienceqa"
@@ -196,9 +186,7 @@ latency_sum = 0.0
 latency_count = 0
 
 
-# =====================================================
-# Evaluation
-# =====================================================
+
 
 for sample in tqdm(testset):
 
@@ -223,13 +211,13 @@ for sample in tqdm(testset):
         image.save(tmp.name)
 
         tmp_path = tmp.name
-#============================================
+
     try:
         semantic_feature, mask, _ = build_semantic_cache(
             question,
             tmp_path
         )
-#===========================================
+
         
 
         pred_text, latency = inference(
